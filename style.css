@@ -71,3 +71,14 @@
   border: none;
   border-radius: 10px;
 }
+
+
+#chat {
+  text-align: right;
+  margin-top: 2rem;
+  color: #111;
+}
+
+#message {
+  font-size: 19px;
+}
