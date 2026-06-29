@@ -60,3 +60,17 @@
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
 }
+
+#btnrooms {
+  margin-left: 3rem;
+
+  background-color: rgb(246, 125, 125);
+  color: white;
+  padding: 10px 15px;
+  font-size: 30px;
+  font-family: "Arial", sans-serif;
+  border: none;
+  border-radius: 10px;
+  
+
+}
