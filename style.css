@@ -82,3 +82,17 @@
 #message {
   font-size: 19px;
 }
+
+#text_message {
+  border: 10px solid #ccc;
+  border-radius: 10px;
+  display: inline-block;
+  background-color: #ccc;
+} 
+
+#username {
+  font-size: 15px;
+  font-weight: bold;
+  color: #111;
+
+}
