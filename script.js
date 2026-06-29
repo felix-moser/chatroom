@@ -112,8 +112,28 @@ try {
       // Show Error message in DOM
       console.log("No Rooms");
     } else {
-      // ToDo Show Messages in DOM
+      
+      for (const message of daten) {
+      // Container for Message
+      let messageDiv = document.createElement("div");
+      messageDiv.id = "message";
+      // Sendername of message
+      let senderName = document.createElement("p");
+      senderName.textContent = message.author;
+      // Send Text
+      let messageText = document.createElement("p");
+      messageText.textContent = message.text;
+      // Date and time of send message
+      let messageTime = document.createElement("p");
+      messageTime.textContent = message.createdAt;
+      // Append all Elements to Div
+      messageDiv.appendChild(senderName);
+      messageDiv.appendChild(messageText);
+      messageDiv.appendChild(messageTime);
+      // Append Div to Message
+      document.getElementById("chat").appendChild(messageDiv);
       console.log(daten);
+      }
     }
   } catch (error) {
     console.log(error);
@@ -154,7 +174,6 @@ async function sendMessage(author,roomID,message) {
 }
 
 startRoomsPolling();
-joinRoom(3);
 window.addEventListener("beforeunload", stopRoomsPolling);
 
 function openNav() {
