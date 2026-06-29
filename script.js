@@ -112,7 +112,7 @@ try {
       // Show Error message in DOM
       console.log("No Rooms");
     } else {
-      
+      document.querySelectorAll("#message").forEach((message) => message.remove());
       for (const message of daten) {
       // Container for Message
       let messageDiv = document.createElement("div");
