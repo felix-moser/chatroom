@@ -127,6 +127,10 @@ async function loadMessages(roomID) {
       return;
     }
 
+    let wasAtBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 40;
+
     chat.innerHTML = "";
 
     if (antwort === "") {
@@ -157,6 +161,10 @@ async function loadMessages(roomID) {
         chat.appendChild(messageDiv);
       }
       console.log(daten);
+    }
+
+    if (wasAtBottom) {
+      window.scrollTo(0, document.documentElement.scrollHeight);
     }
   } catch (error) {
     console.log(error);
