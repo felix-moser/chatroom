@@ -102,6 +102,7 @@ async function addRoom(roomName) {
 
 async function joinRoom(roomID){
   currentRoomId = roomID;
+  document.getElementById("roomname").textContent = roomID;
   startMessagesPolling(roomID);
 }
 
