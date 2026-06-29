@@ -135,19 +135,19 @@ async function loadMessages(roomID) {
       for (const message of daten) {
         // Container for Message
         let messageDiv = document.createElement("div");
-        messageDiv.className = "message";
+        messageDiv.id = "message";
         // Sendername of message
         let senderName = document.createElement("p");
-        senderName.className = "username";
+        senderName.id = "username";
         senderName.textContent = message.author;
         // Send Text
         let messageText = document.createElement("p");
         messageText.textContent = message.text;
-        messageText.className = "text_message";
+        messageText.id = "text_message";
         // Date and time of send message
         let messageTime = document.createElement("p");
         messageTime.textContent = new Date(message.createdAt).toLocaleTimeString();
-        messageTime.className = "date";
+        messageTime.id = "date";
         // Append all Elements to Div
         messageDiv.appendChild(senderName);
         messageDiv.appendChild(messageText);
