@@ -149,3 +149,8 @@
   background-color: #373737;
   border-color: #373737;
 }
+
+#room-btn:active {
+  background-color: #111;
+  border-color: #111;
+}
