@@ -1,6 +1,13 @@
 const URL = "http://10.100.120.111:3000/";
+let roomsPollingId = null;
+let isLoadingRooms = false;
 
 async function loadRooms() {
+  if (isLoadingRooms) {
+    return;
+  }
+
+  isLoadingRooms = true;
   try {
     let antwort = await fetch(URL + "rooms");
     if (!antwort.ok) {
@@ -11,24 +18,50 @@ async function loadRooms() {
 
     let daten = await antwort.json();
 
+    let sidebar = document.getElementById("mySidebar");
+    if (!sidebar) {
+      return;
+    }
+
+    sidebar.querySelectorAll(".room-btn").forEach((button) => button.remove());
+
     if (!Array.isArray(daten) || daten.length === 0) {
       // Show Error message in DOM
       console.log("No Rooms");
     } else {
       // ToDo Load Rooms in DOM
       console.log(daten);
-      let sidebar = document.getElementById("mySidebar");
       for (const room of daten) {
         let newRoom = document.createElement("button");
         newRoom.className = "room-btn";
         newRoom.textContent = room.name;
-        // newRoom.onclick = () => joinRoom(room.id);
+        newRoom.onclick = () => joinRoom(room.id);
         sidebar.appendChild(newRoom);
       }
     }
   } catch (error) {
     console.log(error);
+  } finally {
+    isLoadingRooms = false;
   }
+}
+
+function startRoomsPolling() {
+  if (roomsPollingId) {
+    return;
+  }
+
+  loadRooms();
+  roomsPollingId = setInterval(loadRooms, 5000);
+}
+
+function stopRoomsPolling() {
+  if (!roomsPollingId) {
+    return;
+  }
+
+  clearInterval(roomsPollingId);
+  roomsPollingId = null;
 }
 
 async function addRoom(roomName) {
@@ -120,16 +153,19 @@ async function sendMessage(author,roomID,message) {
   }
 }
 
-loadRooms();
+startRoomsPolling();
 joinRoom(3);
+window.addEventListener("beforeunload", stopRoomsPolling);
 
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
+  document.getElementsByClassName("openbtn")[0].style.visibility = "hidden";
 }
 
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
 function closeNav() {
+  document.getElementsByClassName("openbtn")[0].style.visibility = "visible";
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
 }
