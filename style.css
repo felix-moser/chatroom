@@ -72,7 +72,6 @@
   border-radius: 10px;
 }
 
-
 #chat {
   text-align: right;
   margin-top: 2rem;
@@ -92,7 +91,9 @@
   background-color: #eeeeee;
   flex-direction: column;
   align-items: flex-end;
-  width: 100%;
+  width: fit-content;
+  max-width: 70%;
+  align-self: flex-end;
   box-sizing: border-box;
   padding: 10px;
 }
@@ -105,7 +106,7 @@
   margin-top: 1px;
   overflow-wrap: break-word;
   margin-bottom: 1px;
-  max-width: 70%;
+  max-width: 100%;
 } 
 
 
