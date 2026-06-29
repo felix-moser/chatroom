@@ -103,10 +103,12 @@ async function addRoom(roomName) {
 async function joinRoom(roomID){
   currentRoomId = roomID;
   document.getElementById("roomname").textContent = roomID;
+  document.getElementById("inputArea").style.visibility = "visible";
   startMessagesPolling(roomID);
 }
 
 async function loadMessages(roomID) {
+  document.getElementById("inputArea").style.visibility = "visible";
   if (isLoadingMessages || !roomID) {
     return;
   }
