@@ -133,7 +133,7 @@
   display: block;
   width: 92%;            
   max-width: 400px;       
-  background-color: #373737;
+  background-color: #111;
   color: #ffffff;
   font-weight: 500;
   font-size: 15px;
@@ -143,4 +143,9 @@
   text-align: center;
   box-sizing: border-box;
   margin: 10px auto;
+}
+
+#room-btn:hover {
+  background-color: #373737;
+  border-color: #373737;
 }
