@@ -18,7 +18,7 @@ async function loadRooms() {
 
     let daten = await antwort.json();
 
-    let sidebar = document.getElementById("mySidebar");
+    let sidebar = document.getElementById("roomsList");
     if (!sidebar) {
       return;
     }
