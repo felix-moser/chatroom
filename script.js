@@ -1,6 +1,9 @@
 const URL = "http://10.100.120.111:3000/";
 let roomsPollingId = null;
 let isLoadingRooms = false;
+let messagesPollingId = null;
+let isLoadingMessages = false;
+let currentRoomId = null;
 
 async function loadRooms() {
   if (isLoadingRooms) {
@@ -98,8 +101,19 @@ async function addRoom(roomName) {
 }
 
 async function joinRoom(roomID){
-try {
-    let antwort = await fetch(URL + "rooms/"+roomID+"/messages");
+  currentRoomId = roomID;
+  startMessagesPolling(roomID);
+}
+
+async function loadMessages(roomID) {
+  if (isLoadingMessages || !roomID) {
+    return;
+  }
+
+  isLoadingMessages = true;
+
+  try {
+    let antwort = await fetch(URL + "rooms/" + roomID + "/messages");
     if (!antwort.ok) {
       // Show Error message in DOM
       console.log("HTTP Error");
@@ -107,40 +121,66 @@ try {
     }
 
     let daten = await antwort.json();
+    let chat = document.getElementById("chat");
+    if (!chat) {
+      return;
+    }
+
+    chat.innerHTML = "";
 
     if (antwort === "") {
       // Show Error message in DOM
       console.log("No Rooms");
     } else {
-      document.querySelectorAll("#message").forEach((message) => message.remove());
       for (const message of daten) {
-      // Container for Message
-      let messageDiv = document.createElement("div");
-      messageDiv.id = "message";
-      // Sendername of message
-      let senderName = document.createElement("p");
-      senderName.id = "username";
-      senderName.textContent = message.author;
-      // Send Text
-      let messageText = document.createElement("p");
-      messageText.textContent = message.text;
-      messageText.id = "text_message";
-      // Date and time of send message
-      let messageTime = document.createElement("p");
-      messageTime.textContent = new Date(message.createdAt).toLocaleTimeString();
-      messageTime.id = "date";
-      // Append all Elements to Div
-      messageDiv.appendChild(senderName);
-      messageDiv.appendChild(messageText);
-      messageDiv.appendChild(messageTime);
-      // Append Div to Message
-      document.getElementById("chat").appendChild(messageDiv);
-      console.log(daten);
+        // Container for Message
+        let messageDiv = document.createElement("div");
+        messageDiv.className = "message";
+        // Sendername of message
+        let senderName = document.createElement("p");
+        senderName.className = "username";
+        senderName.textContent = message.author;
+        // Send Text
+        let messageText = document.createElement("p");
+        messageText.textContent = message.text;
+        messageText.className = "text_message";
+        // Date and time of send message
+        let messageTime = document.createElement("p");
+        messageTime.textContent = new Date(message.createdAt).toLocaleTimeString();
+        messageTime.className = "date";
+        // Append all Elements to Div
+        messageDiv.appendChild(senderName);
+        messageDiv.appendChild(messageText);
+        messageDiv.appendChild(messageTime);
+        // Append Div to Message
+        chat.appendChild(messageDiv);
       }
+      console.log(daten);
     }
   } catch (error) {
     console.log(error);
+  } finally {
+    isLoadingMessages = false;
   }
+}
+
+function startMessagesPolling(roomID) {
+  if (messagesPollingId) {
+    clearInterval(messagesPollingId);
+    messagesPollingId = null;
+  }
+
+  loadMessages(roomID);
+  messagesPollingId = setInterval(() => loadMessages(currentRoomId), 5000);
+}
+
+function stopMessagesPolling() {
+  if (!messagesPollingId) {
+    return;
+  }
+
+  clearInterval(messagesPollingId);
+  messagesPollingId = null;
 }
 
 async function sendMessage(author,roomID,message) {
@@ -178,6 +218,7 @@ async function sendMessage(author,roomID,message) {
 
 startRoomsPolling();
 window.addEventListener("beforeunload", stopRoomsPolling);
+window.addEventListener("beforeunload", stopMessagesPolling);
 
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
