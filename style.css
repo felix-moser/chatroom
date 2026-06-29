@@ -80,9 +80,15 @@
 }
 
 #message {
+  border: 10px solid #eeeeee;
+  border-radius: 10px;
+  margin: 10px;
+  display: inline-block;
   font-size: 19px;
-}
+  background-color: #eeeeee;
 
+}
+ 
 #text_message {
   border: 10px solid #ccc;
   border-radius: 10px;
@@ -99,6 +105,7 @@
   color: #111;
   margin-bottom: 1px;
   padding-bottom: 1px;
+  margin-top: 1px;
 }
 
 #date {
@@ -106,5 +113,6 @@
   font-weight: bold;
   color: #111;
   margin-top: 1px;
+  margin-bottom: 0px;
   padding-bottom: 10px;
 }
