@@ -11,12 +11,20 @@ async function loadRooms() {
 
     let daten = await antwort.json();
 
-    if (antwort === "") {
+    if (!Array.isArray(daten) || daten.length === 0) {
       // Show Error message in DOM
       console.log("No Rooms");
     } else {
       // ToDo Load Rooms in DOM
       console.log(daten);
+      let sidebar = document.getElementById("mySidebar");
+      for (const room of daten) {
+        let newRoom = document.createElement("button");
+        newRoom.className = "room-btn";
+        newRoom.textContent = room.name;
+        // newRoom.onclick = () => joinRoom(room.id);
+        sidebar.appendChild(newRoom);
+      }
     }
   } catch (error) {
     console.log(error);
