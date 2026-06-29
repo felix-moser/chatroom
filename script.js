@@ -26,7 +26,7 @@ async function loadRooms() {
       return;
     }
 
-    sidebar.querySelectorAll(".room-btn").forEach((button) => button.remove());
+    sidebar.querySelectorAll("#room-btn").forEach((button) => button.remove());
 
     if (!Array.isArray(daten) || daten.length === 0) {
       // Show Error message in DOM
