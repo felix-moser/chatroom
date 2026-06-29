@@ -184,12 +184,10 @@ function stopMessagesPolling() {
   messagesPollingId = null;
 }
 
-async function sendMessage(author,roomID,message) {
-  if (roomID == "") {
-    // show Error Message in DOM
-    return;
-  }
-
+async function sendMessage() {
+  let author = "testUser";
+  let roomID = document.getElementById("roomname").textContent;
+  let message = document.getElementById("messageInput").value;
   let data = JSON.stringify({ author: author, text: message});
 
   try {
