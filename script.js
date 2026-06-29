@@ -119,13 +119,16 @@ try {
       messageDiv.id = "message";
       // Sendername of message
       let senderName = document.createElement("p");
+      senderName.id = "username";
       senderName.textContent = message.author;
       // Send Text
       let messageText = document.createElement("p");
       messageText.textContent = message.text;
+      messageText.id = "text_message";
       // Date and time of send message
       let messageTime = document.createElement("p");
-      messageTime.textContent = message.createdAt;
+      messageTime.textContent = new Date(message.createdAt).toLocaleTimeString();
+      messageTime.id = "date";
       // Append all Elements to Div
       messageDiv.appendChild(senderName);
       messageDiv.appendChild(messageText);
