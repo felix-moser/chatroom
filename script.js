@@ -243,3 +243,11 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
 }
+
+function showRooms(){
+  if(document.getElementById("roomsList").style.visibility == "hidden"){
+    document.getElementById("roomsList").style.visibility = "visible";
+  }else{
+    document.getElementById("roomsList").style.visibility = "hidden";
+  }
+}
