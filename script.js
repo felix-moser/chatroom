@@ -36,7 +36,7 @@ async function loadRooms() {
       console.log(daten);
       for (const room of daten) {
         let newRoom = document.createElement("button");
-        newRoom.className = "room-btn";
+        newRoom.id = "room-btn";
         newRoom.textContent = room.name;
         newRoom.onclick = () => joinRoom(room.id);
         sidebar.appendChild(newRoom);
