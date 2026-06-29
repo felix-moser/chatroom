@@ -77,16 +77,24 @@
   text-align: right;
   margin-top: 2rem;
   color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; 
+  width: 100%;  
 }
 
 #message {
   border: 10px solid #eeeeee;
   border-radius: 10px;
   margin: 10px;
-  display: inline-block;
+  display: flex;
   font-size: 19px;
   background-color: #eeeeee;
-
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
 }
  
 #text_message {
@@ -95,9 +103,11 @@
   display: inline-block;
   background-color: #ccc;
   margin-top: 1px;
+  overflow-wrap: break-word;
   margin-bottom: 1px;
-
+  max-width: 70%;
 } 
+
 
 #username {
   font-size: 15px;
