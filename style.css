@@ -99,7 +99,12 @@
   color: #111;
   margin-bottom: 1px;
   padding-bottom: 1px;
-  
-
 }
 
+#date {
+  font-size: 12px;
+  font-weight: bold;
+  color: #111;
+  margin-top: 1px;
+  padding-bottom: 10px;
+}
