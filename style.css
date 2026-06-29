@@ -158,3 +158,11 @@
   background-color: #111;
   border-color: #111;
 }
+
+#inputArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  position: fixed;
+}
