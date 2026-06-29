@@ -149,3 +149,7 @@
   background-color: #373737;
   border-color: #373737;
 }
+#roomname{
+  visibility: hidden;
+  size: 0;
+}

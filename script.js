@@ -188,6 +188,7 @@ async function sendMessage() {
   let author = "testUser";
   let roomID = document.getElementById("roomname").textContent;
   let message = document.getElementById("messageInput").value;
+
   let data = JSON.stringify({ author: author, text: message});
 
   try {
@@ -209,7 +210,8 @@ async function sendMessage() {
         // ToDo Show message
         console.log(daten);
     }
-   
+    loadMessages(roomID);
+   document.getElementById("messageInput").value = "";
   } catch (error) {
     console.log(error);
   }
