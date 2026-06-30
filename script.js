@@ -195,9 +195,19 @@ function stopMessagesPolling() {
 }
 
 async function sendMessage() {
-  let author = "testUser";
+  let auther = "";
+  if (document.getElementById("usernameInput").value == ""){
+    author = "Benutzer"
+  } else{
+    author = document.getElementById("usernameInput").value;
+  }
   let roomID = document.getElementById("roomname").textContent;
   let message = document.getElementById("messageInput").value;
+
+  if(message == ""){
+    console.log("No Input!");
+    return
+  }
 
   let data = JSON.stringify({ author: author, text: message});
 
@@ -251,3 +261,10 @@ function showRooms(){
     document.getElementById("roomsList").style.visibility = "hidden";
   }
 }
+
+//Event: Enter to send Message
+document.addEventListener("keydown", function(Event) {
+  if(event.key === "Enter"){
+    sendMessage();
+  }
+})

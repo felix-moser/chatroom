@@ -85,13 +85,6 @@
   left: 0;
   right: 0;
   overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-#roomsList::-webkit-scrollbar {
-  width: 0;
-  height: 0;
 }
 
 #chat {
