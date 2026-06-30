@@ -73,6 +73,10 @@
   border-radius: 10px;
 }
 
+#btnrooms:hover {
+  background-color: #373737;
+}
+
 #roomsList {
   position: relative;
   flex: 1;
@@ -85,8 +89,6 @@
   width: 0;
   height: 0;
 }
-
-
 
 #chat {
   text-align: right;
@@ -160,10 +162,19 @@
   margin: 10px auto;
 }
 
+#room-btn:nth-child(even) {
+  background-color: rebeccapurple;
+}
+
 #room-btn:hover {
   background-color: #373737;
   border-color: #373737;
 }
+
+#room-btn:hover:nth-child(even) {
+  background-color: rgb(64, 4, 91);
+}
+
 #roomname{
   visibility: hidden;
   size: 0;
