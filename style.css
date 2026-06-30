@@ -250,8 +250,8 @@
 }
 
 #usernameInput {
-  flex: 1;
   position: absolute;
+  left: 4%;
   border-radius: 5px;
   border-style: double;
   border-color: #444;
@@ -260,5 +260,6 @@
   font-display: auto;
   display: block;
   bottom: 60px;
-  width: 95%;
+  width: 92%;
+  box-sizing: border-box;
 }
