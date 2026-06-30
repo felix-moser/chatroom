@@ -163,12 +163,12 @@
 }
 
 #room-btn{
-  border-color: gray;
+  border-color: #4a4848;
 }
 
 #room-btn:hover {
-  border: 1px solid rgba(0, 150, 255, 0.6);
-  box-shadow: 0 0 10px rgba(0, 150, 255, 0.35);
+  border: 1px solid rgba(222, 225, 229, 0.6);
+  box-shadow: 0 0 10px rgba(222, 225, 229, 0.35);
   border-radius: 8px; 
 }
 
@@ -244,7 +244,7 @@
   text-align: center;
   box-sizing: border-box;
   flex-shrink: 0;
-  border-color: #2b2b2b;
+  border-color: #4a4848;
 }
 
 #usernameInput {
@@ -296,7 +296,7 @@
   white-space: normal;
   line-height: 1.1;
   min-height: 44px;
-  border-color: #2b2b2b;
+  border-color: #4a4848;
 }
 
 #btnrooms {
