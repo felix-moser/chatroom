@@ -156,24 +156,22 @@
   font-size: 15px;
   padding: 10px 15px;
   border: 1px solid #111;
-  border-radius: 4px;   
+  border-radius: 8px;   
   text-align: center;
   box-sizing: border-box;
   margin: 10px auto;
 }
 
-#room-btn:nth-child(even) {
-  background-color: rebeccapurple;
+#room-btn{
+  border-color: gray;
 }
 
 #room-btn:hover {
-  background-color: #373737;
-  border-color: #373737;
+  border: 1px solid rgba(0, 150, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 150, 255, 0.35);
+  border-radius: 8px; 
 }
 
-#room-btn:hover:nth-child(even) {
-  background-color: rgb(64, 4, 91);
-}
 
 #roomname{
   visibility: hidden;

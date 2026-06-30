@@ -278,3 +278,13 @@ document.addEventListener("keydown", function(Event) {
     sendMessage();
   }
 })
+
+function showAddRoom(){
+    const newRoomControls = document.getElementById("newRoomControls");
+
+  if (newRoomControls.classList.contains("hidden")) {
+    newRoomControls.classList.remove("hidden");
+  } else{
+    newRoomControls.classList.add("hidden");
+  }
+}
