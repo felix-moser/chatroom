@@ -239,3 +239,17 @@
   margin: 0;
   flex-shrink: 0;
 }
+
+#usernameInput {
+  flex: 1;
+  position: absolute;
+  border-radius: 5px;
+  border-style: double;
+  border-color: #444;
+  background-color: lightgray;
+  font-size: large;
+  font-display: auto;
+  display: block;
+  bottom: 60px;
+  width: 95%;
+}
