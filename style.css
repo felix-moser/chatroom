@@ -10,7 +10,8 @@
   overflow-y: hidden;
   padding-top: 60px;
   transition: 0.5s; 
-  display: block;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
 }
 
@@ -77,11 +78,8 @@
 }
 
 #roomsList {
-  position: absolute;
-  top: 135px;
-  bottom: 85px;
-  left: 0;
-  right: 0;
+  position: relative;
+  flex: 1;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -216,7 +214,6 @@
 }
 
 
-
 #btnsend {
   padding: 12px 24px;   
   font-size: 16px;
@@ -235,12 +232,10 @@
 }
 
 #btnaddroom{
-  position: absolute;
-  bottom: 20px;
-  left: 4%;
   display: block;
   width: 92%;            
   max-width: 400px;       
+  margin: 0 auto 10px;
   background-color: #111;
   color: #ffffff;
   font-weight: 500;
@@ -250,21 +245,78 @@
   border-radius: 4px;   
   text-align: center;
   box-sizing: border-box;
-  margin: 0;
   flex-shrink: 0;
+  border-color: #2b2b2b;
 }
 
 #usernameInput {
-  position: absolute;
-  left: 4%;
+  width: 92%;
+  display: block;
+  margin: 0 auto 10px;
+  box-sizing: border-box;
   border-radius: 5px;
   border-style: double;
-  border-color: #444;
-  background-color: lightgray;
+  border-color: #ffffff;
+  background-color: white;
   font-size: large;
   font-display: auto;
-  display: block;
-  bottom: 60px;
+}
+
+#newRoomControls {
   width: 92%;
+  margin: 10px auto 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: nowrap;
   box-sizing: border-box;
+}
+
+#roomnameInput{
+  flex: 3 1 0;
+  min-width: 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: white;
+  font-size: large;
+  padding: 10px 12px;
+  height: 44px;
+}
+#btncreateRoom{
+  flex: 1 1 0;
+  min-width: 72px;
+  box-sizing: border-box;
+  background-color: #111;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 8px 6px;
+  border: 1px solid #111;
+  border-radius: 4px;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.1;
+  min-height: 44px;
+  border-color: #2b2b2b;
+}
+
+#btnrooms {
+  margin-top: 10px;
+}
+
+#newRoomControls.hidden {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+#btncreateRoom:hover{
+  background-color: #373737;
+}
+
+#btnaddroom:hover{
+  background-color: #373737;
 }

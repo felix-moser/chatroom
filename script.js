@@ -67,9 +67,15 @@ function stopRoomsPolling() {
   roomsPollingId = null;
 }
 
-async function addRoom(roomName) {
-  if (roomName == "") {
-    // show Error Message in DOM
+async function addRoom() {
+  const newRoomControls = document.getElementById("newRoomControls");
+
+  if (newRoomControls.classList.contains("hidden")) {
+    newRoomControls.classList.remove("hidden");
+  }else{
+  let roomName = document.getElementById("roomnameInput").value;
+  if(roomName == ""){
+    console.log("Room name is empty!")
     return;
   }
 
@@ -92,11 +98,15 @@ async function addRoom(roomName) {
     let daten = await antwort.json();
     if (antwort.status == 201) {
         // ToDo Show That room was Created
+      newRoomControls.classList.add("hidden");
+      document.getElementById("roomnameInput").value = "";
         console.log(daten);
+        loadRooms();
     }
    
   } catch (error) {
     console.log(error);
+  }
   }
 }
 
